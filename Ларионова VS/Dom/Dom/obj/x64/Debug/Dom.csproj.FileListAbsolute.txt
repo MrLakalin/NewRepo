@@ -1,0 +1,15 @@
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\bin\x64\Debug\Dom.exe.config
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\bin\x64\Debug\Dom.exe
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\bin\x64\Debug\Dom.pdb
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.csproj.AssemblyReference.cache
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.Form1.resources
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.Kvartiry.resources
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.OpenDB.resources
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.Oplata.resources
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.Properties.Resources.resources
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.Vid_oplat.resources
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.csproj.GenerateResource.cache
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.csproj.CoreCompileInputs.cache
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.exe
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.pdb
+C:\Users\MrLak\OneDrive\Рабочий стол\МДК\Ларионова VS\Dom\Dom\obj\x64\Debug\Dom.Vxod.resources
