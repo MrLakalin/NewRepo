@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - Городская Библиотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+    <div class="container header__container">
+        <a href="index.html" class="logo">Городская<span>Библиотека</span></a>
+        <nav class="nav">
+            <a href="index.html" class="nav__link ">Главная</a>
+            <a href="catalog.html" class="nav__link ">Каталог</a>
+            <a href="cabinet.html" class="nav__link active">Личный кабинет</a>
+            <a href="auth.html" class="btn btn--secondary">Войти</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="container section">
+        <h2 class="section__title">Личный кабинет читателя</h2>
+        <div class="catalog-layout">
+            <div>
+                <h3>Ваши книги (Взятые на дом)</h3>
+                <div class="loan-list">
+                    <div class="loan-item loan-item--success">
+                        <div>
+                            <h4>Преступление и наказание</h4>
+                            <p style="font-size: 14px; color: #7f8c8d;">Сдать до: 15.10.2026</p>
+                        </div>
+                        <span class="badge badge--success">В срок</span>
+                    </div>
+                    <div class="loan-item loan-item--danger">
+                        <div>
+                            <h4>Старик и море</h4>
+                            <p style="font-size: 14px; color: #7f8c8d;">Просрочено на 3 дня</p>
+                        </div>
+                        <span class="badge badge--danger">Просрочена</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filters">
+                <h3>Персональные рекомендации</h3>
+                <p style="font-size: 14px; color: #555; margin-bottom: 10px;">На основе ваших интересов к классической литературе:</p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 8px;"><a href="book.html" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">• Идиот (Ф. Достоевский)</a></li>
+                    <li style="margin-bottom: 8px;"><a href="book.html" style="color: var(--primary-color); text-decoration: none; font-weight: 500;">• Война и мир (Л. Толстой)</a></li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог книг — ГородскаяБиблиотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">Городская<span>Библиотека</span></a>
+            <nav class="nav">
+                <a href="index.html" class="nav__link">Главная</a>
+                <a href="catalog.html" class="nav__link active">Каталог</a>
+                <a href="cabinet.html" class="nav__link">Кабинет</a>
+                <a href="auth.html" class="btn btn--secondary">Войти</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1 class="section__title">Каталог фонда</h1>
+        <div class="catalog-layout">
+            <!-- Filters -->
+            <aside class="filters">
+                <h3>Жанры</h3>
+                <label class="filter-item"><input type="checkbox" checked> Классика</label>
+                <label class="filter-item"><input type="checkbox"> Фантастика</label>
+                <label class="filter-item"><input type="checkbox"> Наука и образование</label>
+            </aside>
+
+            <!-- Grid -->
+            <div class="catalog-main">
+                <div class="grid">
+                    <div class="card">
+                        <div class="card__img-stub">Обложка</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Преступление и наказание</h3>
+                            <p class="card__author">Фёдор Достоевский</p>
+                            <span class="badge badge--success">В наличии</span>
+                            <a href="book.html" class="btn" style="margin-top: 15px; display: inline-block;">Открыть карточку</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

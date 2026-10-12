@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — ГородскаяБиблиотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">Городская<span>Библиотека</span></a>
+            <nav class="nav">
+                <a href="index.html" class="nav__link">Главная</a>
+                <a href="catalog.html" class="nav__link">Каталог</a>
+                <a href="cabinet.html" class="nav__link active">Кабинет</a>
+                <a href="index.html" class="nav__link" style="color: #E74C3C;">Выйти</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1 class="section__title">Личный кабинет читателя</h1>
+        <p>Добро пожаловать обратно, Констанин!</p>
+
+        <h2 style="margin-top: 30px;">Текущие книги на руках</h2>
+        <div class="loan-list">
+            <div class="loan-item loan-item--danger">
+                <div>
+                    <h3>Преступление и наказание</h3>
+                    <p>Вернуть до: 15.09.2026 (Срок истек!)</p>
+                </div>
+                <span class="badge badge--danger">Задолженность</span>
+            </div>
+            <div class="loan-item loan-item--success">
+                <div>
+                    <h3>Мастер и Маргарита</h3>
+                    <p>Вернуть до: 10.10.2026</p>
+                </div>
+                <span class="badge badge--success">На руках</span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

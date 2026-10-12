@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - Городская Библиотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+    <div class="container header__container">
+        <a href="index.html" class="logo">Городская<span>Библиотека</span></a>
+        <nav class="nav">
+            <a href="index.html" class="nav__link ">Главная</a>
+            <a href="catalog.html" class="nav__link active">Каталог</a>
+            <a href="cabinet.html" class="nav__link ">Личный кабинет</a>
+            <a href="auth.html" class="btn btn--secondary">Войти</a>
+        </nav>
+    </div>
+</header>
+
+    <main class="container section">
+        <h2 class="section__title">Каталог книг</h2>
+        <div class="catalog-layout">
+            <aside class="filters">
+                <h3>Жанры</h3>
+                <label class="filter-item"><input type="checkbox" checked> Классика</label>
+                <label class="filter-item"><input type="checkbox"> Фантастика</label>
+                <label class="filter-item"><input type="checkbox"> Детективы</label>
+                <label class="filter-item"><input type="checkbox"> История</label>
+                
+                <h3 style="margin-top: 20px;">Доступность</h3>
+                <label class="filter-item"><input type="radio" name="avail" checked> Все</label>
+                <label class="filter-item"><input type="radio" name="avail"> В наличии</label>
+            </aside>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="card__img-stub">Обложка книги</div>
+                    <div class="card__content">
+                        <span class="badge badge--success">В наличии</span>
+                        <h3 class="card__title">Преступление и наказание</h3>
+                        <p class="card__author">Фёдор Достоевский</p>
+                        <a href="book.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__img-stub">Обложка книги</div>
+                    <div class="card__content">
+                        <span class="badge badge--danger">Выдана</span>
+                        <h3 class="card__title">Мастер и Маргарита</h3>
+                        <p class="card__author">Михаил Булгаков</p>
+                        <a href="book.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__img-stub">Обложка книги</div>
+                    <div class="card__content">
+                        <span class="badge badge--success">В наличии</span>
+                        <h3 class="card__title">1984</h3>
+                        <p class="card__author">Джордж Оруэлл</p>
+                        <a href="book.html" class="btn">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

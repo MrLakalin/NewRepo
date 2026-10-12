@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преступление и наказание — ГородскаяБиблиотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">Городская<span>Библиотека</span></a>
+            <nav class="nav">
+                <a href="index.html" class="nav__link">Главная</a>
+                <a href="catalog.html" class="nav__link active">Каталог</a>
+                <a href="cabinet.html" class="nav__link">Кабинет</a>
+                <a href="auth.html" class="btn btn--secondary">Войти</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <div class="book-details">
+            <div class="book-details__cover">Обложка Книги</div>
+            <div class="book-details__info">
+                <h1>Преступление и наказание</h1>
+                <p class="book-details__author">Автор: Фёдор Достоевский</p>
+                <div class="book-details__meta">
+                    <p><strong>Жанр:</strong> Классическая проза, Психологический роман</p>
+                    <p><strong>Год издания:</strong> 1866</p>
+                    <p><strong>Статус:</strong> <span class="badge badge--success">Доступна для брони</span></p>
+                </div>
+                <p class="book-details__desc">
+                    Глубокое социально-философское исследование человеческой души, морали и греха. История студента Родиона Раскольникова, решившего проверить свою гипотезу о «необыкновенных людях».
+                </p>
+                <button class="btn" onclick="alert('Книга успешно забронирована! Заберите её в течение 3 дней.')">Забронировать онлайн</button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

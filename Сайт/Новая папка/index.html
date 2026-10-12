@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цифровая Библиотека</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="index.html" class="logo">Городская<span>Библиотека</span></a>
+            <nav class="nav">
+                <a href="index.html" class="nav__link active">Главная</a>
+                <a href="catalog.html" class="nav__link">Каталог</a>
+                <a href="cabinet.html" class="nav__link">Кабинет</a>
+                <a href="auth.html" class="btn btn--secondary">Войти</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero__container">
+                <h1 class="hero__title">Современное цифровое пространство библиотеки</h1>
+                <p class="hero__subtitle">Доступ к тысячам книг, научным ресурсам и культурным событиям в один клик.</p>
+                <form action="catalog.html" method="GET" class="search-form">
+                    <input type="text" class="form-input search-form__input" placeholder="Поиск по названию, автору или жанру..." required>
+                    <button type="submit" class="btn">Найти книгу</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- New Arrivals -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section__title">Новинки фонда</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card__img-stub">Обложка</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Преступление и наказание</h3>
+                            <p class="card__author">Фёдор Достоевский</p>
+                            <a href="book.html" class="btn btn--secondary">Подробнее</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__img-stub">Обложка</div>
+                        <div class="card__content">
+                            <h3 class="card__title">Мастер и Маргарита</h3>
+                            <p class="card__author">Михаил Булгаков</p>
+                            <a href="#" class="btn btn--secondary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
