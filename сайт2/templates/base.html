@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ГородскаяБиблиотека{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+    <div class="container header__container">
+        <a href="{{ url_for('index') }}" class="logo">
+            Городская<span>Библиотека</span>
+        </a>
+        <nav class="nav">
+            <a href="{{ url_for('index') }}"
+               class="nav__link {% if request.endpoint == 'index' %}active{% endif %}">
+                Главная
+            </a>
+            <a href="{{ url_for('catalog') }}"
+               class="nav__link {% if request.endpoint == 'catalog' %}active{% endif %}">
+                Каталог
+            </a>
+
+            {% if current_user.is_authenticated %}
+                {% if current_user.is_admin %}
+                    <a href="{{ url_for('admin_users') }}"
+                       class="nav__link {% if request.endpoint == 'admin_users' %}active{% endif %}">
+                        Читатели
+                    </a>
+                    <a href="{{ url_for('admin_admins') }}"
+                       class="nav__link {% if request.endpoint == 'admin_admins' %}active{% endif %}">
+                        Администраторы
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('cabinet') }}"
+                       class="nav__link {% if request.endpoint == 'cabinet' %}active{% endif %}">
+                        Кабинет
+                    </a>
+                {% endif %}
+
+                <span class="nav__user">
+                    {{ current_user.full_name }}
+                    <span class="badge badge--info">{{ current_user.role_label }}</span>
+                </span>
+                <a href="{{ url_for('logout') }}"
+                   class="nav__link" style="color:#E74C3C;">Выйти</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn btn--secondary">
+                    Войти
+                </a>
+                <a href="{{ url_for('register') }}" class="btn">
+                    Регистрация
+                </a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+
+<main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container" style="margin-top: 15px;">
+                {% for category, msg in messages %}
+                    <div class="alert alert--{{ category }}">
+                        <strong>
+                            {% if category == 'danger' %}Ошибка{% endif %}
+                            {% if category == 'success' %}Успешно{% endif %}
+                            {% if category == 'warning' %}Внимание{% endif %}
+                            {% if category == 'info' %}Информация{% endif %}
+                        </strong>
+                        <span>{{ msg }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

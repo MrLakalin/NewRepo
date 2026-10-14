@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Администраторы{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="admin-header">
+        <h1 class="section__title">Администраторы</h1>
+        <a href="{{ url_for('admin_admin_new') }}" class="btn">
+            + Добавить администратора
+        </a>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Телефон</th>
+                    <th>ФИО</th>
+                    <th>Статус</th>
+                    <th>Последний вход</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a in admins %}
+                    <tr>
+                        <td>{{ a.id }}</td>
+                        <td><strong>{{ a.phone }}</strong></td>
+                        <td>{{ a.full_name }}</td>
+                        <td>
+                            {% if a.is_blocked %}
+                                <span class="badge badge--danger">Заблокирован</span>
+                            {% else %}
+                                <span class="badge badge--success">Активен</span>
+                            {% endif %}
+                            {% if a.must_change_password %}
+                                <span class="badge badge--warning">Сменить пароль</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if a.last_login %}
+                                {{ a.last_login.strftime('%d.%m.%Y %H:%M') }}
+                            {% else %}—{% endif %}
+                        </td>
+                        <td class="actions-cell">
+                            <a href="{{ url_for('admin_admin_edit', admin_id=a.id) }}"
+                               class="btn btn--small">Изменить</a>
+                            {% if a.id != current_user.id %}
+                                <form method="POST"
+                                      action="{{ url_for('admin_admin_delete', admin_id=a.id) }}"
+                                      style="display:inline;"
+                                      onsubmit="return confirm('Удалить администратора {{ a.phone }}?');">
+                                    <button type="submit"
+                                            class="btn btn--small btn--danger">
+                                        Удалить
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align:center;padding:30px;">
+                            Администраторы не найдены.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

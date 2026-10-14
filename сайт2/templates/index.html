@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Главная — ГородскаяБиблиотека{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero__container">
+        <h1 class="hero__title">
+            Современное цифровое пространство библиотеки
+        </h1>
+        <p class="hero__subtitle">
+            Доступ к тысячам книг, научным ресурсам
+            и культурным событиям в один клик.
+        </p>
+        <form action="{{ url_for('catalog') }}" method="GET"
+              class="search-form">
+            <input type="text" name="q"
+                   class="form-input search-form__input"
+                   placeholder="Поиск по названию, автору или жанру...">
+            <button type="submit" class="btn">Найти книгу</button>
+        </form>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h2 class="section__title">Новинки фонда</h2>
+        <div class="grid">
+            {% for book in books %}
+                <div class="card">
+                    {% if book.cover_url %}
+                        <img src="{{ book.cover_url }}"
+                             alt="{{ book.title }}"
+                             class="card__cover"
+                             loading="lazy">
+                    {% else %}
+                        <div class="card__img-stub">Обложка</div>
+                    {% endif %}
+                    <div class="card__content">
+                        <h3 class="card__title">{{ book.title }}</h3>
+                        <p class="card__author">{{ book.author }}</p>
+                        <a href="{{ url_for('book_detail', book_id=book.id) }}"
+                           class="btn btn--secondary">Подробнее</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

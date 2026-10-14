@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Каталог книг{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <h1 class="section__title">Каталог фонда</h1>
+
+    <div class="catalog-layout">
+        <aside class="filters">
+            <h3>Жанры</h3>
+            <a href="{{ url_for('catalog') }}"
+               class="filter-item {% if not active_genre %}active{% endif %}">
+                Все
+            </a>
+            {% for g in genres %}
+                <a href="{{ url_for('catalog', genre=g) }}"
+                   class="filter-item {% if active_genre == g %}active{% endif %}">
+                    {{ g }}
+                </a>
+            {% endfor %}
+        </aside>
+
+        <div class="catalog-main">
+            {% if query %}
+                <p style="margin-bottom:15px;">
+                    Результаты поиска по запросу:
+                    <strong>{{ query }}</strong>
+                </p>
+            {% endif %}
+
+            <div class="grid">
+                {% for book in books %}
+                    <div class="card">
+                        {% if book.cover_url %}
+                            <img src="{{ book.cover_url }}"
+                                 alt="{{ book.title }}"
+                                 class="card__cover"
+                                 loading="lazy">
+                        {% else %}
+                            <div class="card__img-stub">Обложка</div>
+                        {% endif %}
+                        <div class="card__content">
+                            <h3 class="card__title">{{ book.title }}</h3>
+                            <p class="card__author">{{ book.author }}</p>
+                            {% if book.available %}
+                                <span class="badge badge--success">
+                                    В наличии
+                                </span>
+                            {% else %}
+                                <span class="badge badge--danger">
+                                    Забронирована
+                                </span>
+                            {% endif %}
+                            <a href="{{ url_for('book_detail', book_id=book.id) }}"
+                               class="btn"
+                               style="margin-top:15px;display:inline-block;">
+                                Открыть карточку
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <p>Книги не найдены.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
