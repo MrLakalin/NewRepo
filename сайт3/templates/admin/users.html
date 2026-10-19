@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Читатели{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="admin-header">
+        <h1 class="section__title">Читатели</h1>
+        <a href="{{ url_for('admin_user_new') }}" class="btn">
+            + Добавить читателя
+        </a>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Телефон</th>
+                    <th>ФИО</th>
+                    <th>Статус</th>
+                    <th>Последний вход</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in readers %}
+                    <tr>
+                        <td>{{ r.id }}</td>
+                        <td><strong>{{ r.phone }}</strong></td>
+                        <td>{{ r.full_name }}</td>
+                        <td>
+                            {% if r.is_blocked %}
+                                <span class="badge badge--danger">Заблокирован</span>
+                            {% else %}
+                                <span class="badge badge--success">Активен</span>
+                            {% endif %}
+                            {% if r.must_change_password %}
+                                <span class="badge badge--warning">Сменить пароль</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if r.last_login %}
+                                {{ r.last_login.strftime('%d.%m.%Y %H:%M') }}
+                            {% else %}—{% endif %}
+                        </td>
+                        <td class="actions-cell">
+                            <a href="{{ url_for('admin_user_edit', reader_id=r.id) }}"
+                               class="btn btn--small">Изменить</a>
+                            <form method="POST"
+                                  action="{{ url_for('admin_user_delete', reader_id=r.id) }}"
+                                  style="display:inline;"
+                                  onsubmit="return confirm('Удалить читателя {{ r.phone }}?');">
+                                <button type="submit"
+                                        class="btn btn--small btn--danger">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align:center;padding:30px;">
+                            Читатели не найдены.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

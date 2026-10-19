@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Брони и наличие книг{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="admin-header">
+        <h1 class="section__title">Брони и наличие книг</h1>
+        <a href="{{ url_for('catalog') }}" class="btn btn--secondary">
+            Перейти в каталог
+        </a>
+    </div>
+
+    <!-- Таблица активных броней -->
+    <h2 style="margin-top: 20px; margin-bottom: 15px; color: var(--primary-color);">Активные брони (Книги у читателей)</h2>
+    <div class="table-wrapper" style="margin-bottom: 40px;">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID брони</th>
+                    <th>Книга</th>
+                    <th>Читатель</th>
+                    <th>Телефон</th>
+                    <th>Вернуть до</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for loan in loans %}
+                    {% set overdue = loan.due_date < today %}
+                    <tr>
+                        <td>{{ loan.id }}</td>
+                        <td>
+                            <strong>{{ loan.book.title }}</strong><br>
+                            <small style="color: #7f8c8d;">{{ loan.book.author }}</small>
+                        </td>
+                        <td>{{ loan.reader.full_name }}</td>
+                        <td>{{ loan.reader.phone }}</td>
+                        <td>
+                            {% if overdue %}
+                                <span class="badge badge--danger">{{ loan.due_date.strftime('%d.%m.%Y') }} (Просрочено!)</span>
+                            {% else %}
+                                {{ loan.due_date.strftime('%d.%m.%Y') }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ url_for('admin_loan_return', loan_id=loan.id) }}" style="display:inline;" onsubmit="return confirm('Отметить книгу «{{ loan.book.title }}» как возвращённую?');">
+                                <button type="submit" class="btn btn--small btn--success">
+                                    Вернуть в фонд
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align:center;padding:30px;">
+                            Нет активных броней.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Таблица книг в наличии -->
+    <h2 style="margin-bottom: 15px; color: var(--primary-color);">Книги в фонде (Доступны)</h2>
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Автор</th>
+                    <th>Жанр</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in available_books %}
+                    <tr>
+                        <td>{{ book.id }}</td>
+                        <td><strong>{{ book.title }}</strong></td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.genre or '—' }}</td>
+                        <td><span class="badge badge--success">Доступна</span></td>
+                        <td>
+                            <form method="POST" action="{{ url_for('admin_book_toggle_availability', book_id=book.id) }}" style="display:inline;" onsubmit="return confirm('Списать книгу «{{ book.title }}» (отметить как недоступную)?');">
+                                <button type="submit" class="btn btn--small btn--danger">
+                                    Списать / Потеряна
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align:center;padding:30px;">
+                            Все книги выданы или списаны.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

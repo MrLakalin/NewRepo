@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Заблокированные пользователи{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="admin-header">
+        <h1 class="section__title">Заблокированные пользователи</h1>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Тип</th>
+                    <th>Телефон</th>
+                    <th>ФИО</th>
+                    <th>Причина</th>
+                    <th>Заблокирован</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in blocked %}
+                    <tr>
+                        <td>{{ b.id }}</td>
+                        <td>
+                            <span class="badge badge--info">{{ b.kind_label }}</span>
+                        </td>
+                        <td><strong>{{ b.phone }}</strong></td>
+                        <td>{{ b.full_name }}</td>
+                        <td>{{ b.reason }}</td>
+                        <td>
+                            {{ b.blocked_at.strftime('%d.%m.%Y %H:%M') }}
+                        </td>
+                        <td class="actions-cell">
+                            <form method="POST"
+                                  action="{{ url_for('admin_blocked_unblock', blocked_id=b.id) }}"
+                                  style="display:inline;"
+                                  onsubmit="return confirm('Разблокировать {{ b.phone }}?');">
+                                <button type="submit"
+                                        class="btn btn--small btn--success">
+                                    Разблокировать
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" style="text-align:center;padding:30px;">
+                            Заблокированных пользователей нет.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
